@@ -9,9 +9,8 @@ app = Flask(__name__)
 CATALOG_BASE = "https://catalog.roblox.com"
 TIMEOUT = 5.0
 RETRIES = 3
-CACHE_TTL = 60  # segundos
+CACHE_TTL = 120
 
-# Session com retries
 session = requests.Session()
 retry = Retry(
     total=RETRIES,
@@ -23,7 +22,6 @@ adapter = HTTPAdapter(max_retries=retry)
 session.mount("https://", adapter)
 session.mount("http://", adapter)
 
-# Cache simples: {url: (timestamp, response_content)}
 cache = {}
 
 def cors_headers():
@@ -46,7 +44,6 @@ def proxy(path):
     if qs:
         url += f"?{qs}"
 
-    # Verifica cache
     now = time.time()
     if url in cache:
         ts, content = cache[url]
