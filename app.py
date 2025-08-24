@@ -9,7 +9,7 @@ app = Flask(__name__)
 CATALOG_BASE = "https://catalog.roblox.com"
 TIMEOUT = 5.0
 RETRIES = 3
-CACHE_TTL = 120
+CACHE_TTL = 3600
 
 session = requests.Session()
 retry = Retry(
