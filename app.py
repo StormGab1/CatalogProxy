@@ -4,6 +4,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import time
 
+
 app = Flask(__name__)
 
 CATALOG_BASE = "https://catalog.roblox.com"
